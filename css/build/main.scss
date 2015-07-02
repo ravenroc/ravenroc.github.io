@@ -1,3 +1,4 @@
+@import "_normalize";
 @import "_vars";
 
 // h1 {
@@ -8,5 +9,62 @@
 // 	color: map-get($colors, yellow);
 // }
 
+body {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+
+.site-head {
+	background: green;
+	color: white;
+	width: 100%;
+	height: $header-height;
+	position: relative;
+
+	h1 {
+		margin: 0;
+		padding: 0;
+
+		&, a {
+			color: white;
+		}
+	}
+}
+
+nav.main {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: block;
+		background-color: red;
+
+		li {
+			display: inline-block;
+		}
+
+		a {
+			display: block;
+			padding: 0 1em;
+			width: auto;
+			height: $header-height;
+			line-height: $header-height;
+			color: white;
+			transition: map-get($transition, default);
+
+			&:hover {
+				color: blue;
+			}
+		}
+	}
+}
 
 

@@ -27,13 +27,16 @@ module.exports = function(grunt) {
             } 
         },
 
-        postcss: {
-            map: true,
-            processors: [
-                require('autoprefixer-core')({browsers: 'last 2 version'}).postcss,
-                require('csswring').postcss
-            ],
-            dist: { src: 'css/build/*.css' }
+        autoprefixer: {
+            options: {
+                browsers: ['last 2 versions']
+            },
+            main: {
+                expand: true,
+                flatten: true,
+                src: 'dist/*.css',
+                dest: 'dist/'
+            }
         },
 
         watch: {
@@ -49,7 +52,7 @@ module.exports = function(grunt) {
             },*/
             css: {
                 files: ['css/build/*.scss'],
-                tasks: ['sass'],
+                tasks: ['sass','autoprefixer'],
                 options: {
                     spawn: false,
                 }
@@ -62,9 +65,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-postcss');
+    grunt.loadNpmTasks('grunt-autoprefixer');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['sass','imagemin', 'watch']);
+    grunt.registerTask('default', ['sass','imagemin','autoprefixer', 'watch']);
 
 };
