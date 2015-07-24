@@ -1,5 +1,6 @@
 @import "_normalize";
 @import "_vars";
+@import "_svg";
 
 // h1 {
 // 	color: map-get($colors, red);
@@ -9,29 +10,128 @@
 // 	color: map-get($colors, yellow);
 // }
 
+* {
+	margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
 body {
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
+	width: 100%;
 	font-size: 16px;
 	margin: 0;
 	padding: 0;
+	background-color: map-get($colors, white);
+	font-family: $font-roboto;
+	position: relative;
+}
+
+a {
+	color: map-get($colors, blue);
+	text-decoration: none;
+	font-weight: bold;
+
+	&:hover {
+		color: map-get($colors, orange);
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $font-mono;
+}
+
+h1 {
+	text-transform: uppercase;
+	color: map-get($colors, black);
+}
+
+// #particles-js {
+// 	@include absolute-position();
+// 	width: 100%;
+// 	height: 100%;
+// 	z-index: 1;
+// 	background-color: map-get($colors, white);
+// 	background-image: url("");
+// 	background-repeat: no-repeat;
+// 	background-size: cover;
+// 	background-position: 50% 50%;	
+
+// 	canvas {
+// 		display: block;
+// 		vertical-align: bottom;
+// 	}
+// }
+
+.page-wrap {
+	@include absolute-position((t:0,l:0));
+	min-height: 100%;
+	margin-bottom: -$footer-height; 
+
+	&:after {
+		content: "";
+		display: block;
+	}
+}
+
+.site-footer, .page-wrap:after {
+	height: $footer-height; 
 }
 
 .site-head {
-	background: green;
-	color: white;
+	z-index: 10;
+	background: map-get($colors, blue);
 	width: 100%;
 	height: $header-height;
 	position: relative;
 
 	h1 {
+		@extend .default-transition;
+		display: inline-block;
 		margin: 0;
-		padding: 0;
+		padding: 0 1em;
+		line-height: $header-height;
+		font-family: $font-mono;
+		color: map-get($colors, white);
+		text-shadow: 3px 1px 0 map-get($colors, black);
+		width: auto;
 
-		&, a {
-			color: white;
+		&:hover {
+			text-shadow: 3px 3px 0 map-get($colors, black);
 		}
+	}
+}
+
+.site-footer {
+	background-color: map-get($colors, black);
+	color: map-get($colors, white);
+	font-size: 0.75em;
+	line-height: 2.5em;
+	text-align: center;
+
+	&, a {
+		color: map-get($colors, white);
+	}
+
+	a {
+		display: inline-block;
+		width: $footer-height;
+		height: $footer-height;
+		font-size: 1.25em;
+
+		&:hover {
+			color: map-get($colors, blue);
+		}
+	}
+
+	svg {
+		vertical-align: middle;
+	}
+
+	.socials {
+		display: inline-block;
+		margin-left: 3em;
 	}
 }
 
@@ -45,26 +145,97 @@ nav.main {
 		margin: 0;
 		padding: 0;
 		display: block;
-		background-color: red;
 
 		li {
 			display: inline-block;
 		}
 
 		a {
+			position: relative;
+			font-size: 2em;
 			display: block;
-			padding: 0 1em;
-			width: auto;
+			width: $header-height;
 			height: $header-height;
 			line-height: $header-height;
-			color: white;
-			transition: map-get($transition, default);
+			color: map-get($colors, white);
+			overflow: hidden;
 
-			&:hover {
-				color: blue;
+			&, &:before, &:after {
+				@extend .default-transition;
+			}
+
+			svg {
+				z-index: 12;
+				@include centerer;
+			}
+
+			&:before {
+				content: "";
+				z-index: 11;
+				@include absolute-position((t:100%,l:0));
+				width: 100%;
+				height: 100%;
+				background-color: map-get($colors, white);
+				border-radius: 1.5em 1.5em 0 0;
+			}
+
+			&:after {
+				content: attr(title);
+				z-index: 13;
+				@include absolute-position((b:-1em));
+				display: block;
+				width: 100%;
+				text-align: center;
+				text-transform: uppercase;
+				font-size: 0.4em;
+				line-height: normal;
+				opacity: 0;
+				color: map-get($colors, black);
+			}
+
+			&:hover, &.active {
+				color: map-get($colors, black);
+
+				&:before {
+					top: 0;
+				}
+				&:after {
+					bottom: 0.25em;
+					opacity: 1;
+				}
 			}
 		}
 	}
 }
+
+main {
+
+	a {
+		padding: 0 0.25em;
+		display: inline-block;
+		background-color: rgba(map-get($colors, orange), 0.25);
+		color: map-get($colors, black);
+		@extend .default-transition;
+
+		&:hover {
+			background-color: rgba(map-get($colors, orange), 0.75);
+			color: map-get($colors, black);
+			text-shadow: 1px 1px 0 map-get($colors, white);
+		}
+	}
+
+	section {
+		@extend .default-transition;
+		overflow-y: auto;
+		padding: 1em 3em;
+		display: none;
+
+		&.active {
+			display: block;
+		}
+	}
+}
+
+
 
 

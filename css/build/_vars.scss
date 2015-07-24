@@ -1,15 +1,45 @@
 $colors: (
-	red: red,
-	yellow: yellow
+	orange: #FF9900,
+	black: #424242,
+	white: #E9E9E9,
+	gray: #BCBCBC,
+	blue: #3299BB,
 );
 
-$fonts: (
-	header: "",
-	text: ""
-);
+$font-mono: "PT Mono";
+$font-roboto: Roboto, sans-serif;
 
-$transition: (
-	default: all 0.3s,
-);
+$header-height: 5rem;
+$footer-height: 2rem;
 
-$header-height: 5em;
+/* EXTEND CLASSES */
+.default-transition {
+	transition: all 0.3s;
+}
+
+
+/* MIXINS */
+@mixin absolute-position($pos: false){
+	position: absolute;
+	@if $pos {
+		@if ( map-get($pos, t) ) { top: map-get($pos, t); }
+		@if ( map-get($pos, r) ) { right: map-get($pos, r); }
+		@if ( map-get($pos, b) ) { bottom: map-get($pos, b); }
+		@if ( map-get($pos, l) ) { left: map-get($pos, l); }
+	}
+}
+
+@mixin centerer($horizontal: true, $vertical: true) {
+	position: absolute;
+	@if ($horizontal and $vertical) {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	} @else if ($horizontal) {
+		left: 50%;
+		transform: translate(-50%, 0);
+	} @else if ($vertical) {
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+}
