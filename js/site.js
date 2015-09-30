@@ -5,8 +5,8 @@ $(function(){
 
 	$(document).on("click", "nav.main .nav-item", function(e){
 		e.preventDefault();
-		var sec = $(e.currentTarget).data("section");
-		$("main > section").removeClass("active");
+		$("main > section, nav.main a").removeClass("active");
+		var sec = $(e.currentTarget).addClass("active").data("section");
 		$("main > section."+sec).addClass("active");
 	});
 

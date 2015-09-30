@@ -1,6 +1,6 @@
 $colors: (
 	orange: #FF9900,
-	black: #424242,
+	black: #222222,
 	white: #E9E9E9,
 	gray: #BCBCBC,
 	blue: #3299BB,
@@ -8,13 +8,19 @@ $colors: (
 
 $font-mono: "PT Mono";
 $font-roboto: Roboto, sans-serif;
+$font-orbitron: Orbitron, sans-serif;
 
 $header-height: 5rem;
+$header-height-mobile: 3rem;
 $footer-height: 2rem;
 
 /* EXTEND CLASSES */
 .default-transition {
 	transition: all 0.3s;
+}
+
+.default-box-shadow {
+	box-shadow: 0 0.2em 0.2em 0 rgba(map-get($colors, black), 0.5);
 }
 
 
