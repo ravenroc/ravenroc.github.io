@@ -2,14 +2,6 @@
 @import "_vars";
 @import "_svg";
 
-// h1 {
-// 	color: map-get($colors, red);
-// }
-
-// h2 {
-// 	color: map-get($colors, yellow);
-// }
-
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -24,7 +16,7 @@ body {
 	font-size: 16px;
 	margin: 0;
 	padding: 0;
-	background-color: map-get($colors, white);
+	background: repeating-linear-gradient(45deg, lighten(map-get($colors, orange), 35), lighten(map-get($colors, orange), 35) 1px, map-get($colors, white) 0, map-get($colors, white) 5px);
 	font-family: $font-roboto;
 	position: relative;
 }
@@ -89,7 +81,6 @@ hr {
 		padding: 0 1em;
 		line-height: $header-height;
 		color: map-get($colors, white);
-		text-shadow: 3px 1px 0 map-get($colors, black);
 		width: auto;
 		text-transform: lowercase;
 
