@@ -8,11 +8,11 @@ $colors: (
 
 $font-mono: "PT Mono";
 $font-roboto: Roboto, sans-serif;
-$font-orbitron: Orbitron, sans-serif;
+$font-lora: Lora, serif;
 
 $header-height: 5rem;
 $header-height-mobile: 3rem;
-$footer-height: 2rem;
+$footer-height: 3rem;
 
 /* EXTEND CLASSES */
 .default-transition {
@@ -20,7 +20,7 @@ $footer-height: 2rem;
 }
 
 .default-box-shadow {
-	box-shadow: 0 0.2em 0.2em 0 rgba(map-get($colors, black), 0.5);
+	box-shadow: 0 0.2em 0.2em rgba(map-get($colors, black), 0.5);
 }
 
 

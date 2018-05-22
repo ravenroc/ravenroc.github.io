@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-    // 1. All configuration goes here 
+    // 1. All configuration goes here
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         // 2. Configuration for concatinating files goes here.
@@ -22,9 +22,9 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'css/dist/main.css': 'css/build/main.scss'	//-- compiled files: raw files 
+                    'css/dist/main.css': 'css/build/main.scss'
                 }
-            } 
+            }
         },
 
         autoprefixer: {
@@ -43,13 +43,6 @@ module.exports = function(grunt) {
             options: {
                 livereload: true,
             },
-            /*scripts: {
-                files: ['js/*.js'],
-                tasks: ['concat', 'uglify'],
-                options: {
-                    spawn: false,
-                },
-            },*/
             css: {
                 files: ['css/build/*.scss'],
                 tasks: ['sass','autoprefixer'],

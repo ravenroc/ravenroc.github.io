@@ -16,9 +16,18 @@ body {
 	font-size: 16px;
 	margin: 0;
 	padding: 0;
-	background: repeating-linear-gradient(45deg, lighten(map-get($colors, orange), 35), lighten(map-get($colors, orange), 35) 1px, map-get($colors, white) 0, map-get($colors, white) 5px);
 	font-family: $font-roboto;
 	position: relative;
+
+	background: repeating-linear-gradient(
+                -45deg,
+                rgba(0, 0, 0, 0),
+                rgba(0, 0, 0, 0) 19.999992%,
+                rgba(34, 34, 34, 0.15) 19.999992%,
+                rgba(34, 34, 34, 0.15) 21%
+              ) top left fixed,
+              linear-gradient(25deg, map-get($colors, gray), map-get($colors, white) 100%) fixed;
+  background-size: 11px 11px, 100%;
 }
 
 a {
@@ -32,11 +41,11 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: $font-orbitron;
+	font-family: $font-lora;
+	font-weight: normal;
 }
 
 h1 {
-	text-transform: uppercase;
 	color: map-get($colors, black);
 }
 
@@ -50,12 +59,12 @@ hr {
 	border: 0 none;
 	overflow: hidden;
 	height: 0;
-	border-bottom: 0.5em solid rgba(map-get($colors, orange), 0.5);
+	border-bottom: 0.2em solid map-get($colors, black);
 }
 
 .page-wrap {
 	min-height: 100%;
-	margin-bottom: -$footer-height; 
+	margin-bottom: -$footer-height;
 
 	&:after {
 		content: "";
@@ -64,12 +73,12 @@ hr {
 }
 
 .site-footer, .page-wrap:after {
-	height: $footer-height; 
+	height: $footer-height;
 }
 
 .site-head {
 	z-index: 10;
-	background: map-get($colors, blue);
+	background: map-get($colors, black);
 	width: 100%;
 	height: $header-height;
 	position: relative;
@@ -82,11 +91,6 @@ hr {
 		line-height: $header-height;
 		color: map-get($colors, white);
 		width: auto;
-		text-transform: lowercase;
-
-		&:hover {
-			text-shadow: 3px 3px 0 map-get($colors, black);
-		}
 	}
 
 	@media screen and (max-width: 31em) {
@@ -101,7 +105,7 @@ hr {
 .site-footer {
 	background-color: map-get($colors, black);
 	color: map-get($colors, white);
-	font-size: 0.75em;
+	font-size: 1em;
 	line-height: 2.5em;
 	text-align: center;
 
@@ -116,7 +120,7 @@ hr {
 		font-size: 1.25em;
 
 		&:hover {
-			color: map-get($colors, blue);
+			color: map-get($colors, orange);
 		}
 	}
 
@@ -126,7 +130,6 @@ hr {
 
 	.socials {
 		display: inline-block;
-		margin-left: 3em;
 	}
 }
 
@@ -134,12 +137,14 @@ nav.main {
 	position: absolute;
 	top: 0;
 	right: 0;
+	height: 100%;
 
 	ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
-		display: block;
+		display: flex;
+		height: 100%;
 
 		li {
 			display: inline-block;
@@ -161,7 +166,8 @@ nav.main {
 
 			svg {
 				z-index: 12;
-				@include centerer;
+				@include absolute-position((t:50%,l:50%));
+				transform: translate(-50%, -55%);
 			}
 
 			&:before {
@@ -171,7 +177,6 @@ nav.main {
 				width: 100%;
 				height: 100%;
 				background-color: map-get($colors, white);
-				border-radius: 1.5em 1.5em 0 0;
 			}
 
 			&:after {
@@ -260,8 +265,8 @@ main {
 	}
 
 	article {
-		h1, h2, h3 {
-			color: map-get($colors, blue);
+		h2, h3 {
+			font-size: 1.25em;
 			line-height: 1.5em;
 			text-transform: none;
 		}
@@ -330,7 +335,7 @@ main {
 		width: 100%;
 		height: 100%;
 
-		
+
 		svg {
 			display: block;
 			width: 100%;
@@ -346,15 +351,12 @@ main {
 		}
 
 		&:hover {
-			color: map-get($colors, blue);
 			&:after {
 				background-color: rgba(map-get($colors, orange), 0.66);
 				height: 0.5em;
 			}
 		}
-		
+
 	}
 
 }
-
-
