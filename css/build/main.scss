@@ -315,35 +315,25 @@ main {
 }
 
 .social-code {
-	list-style: none;
-	margin: 0;
-	padding: 0;
 	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-around;
-
-	li {
-		width: 20vw;
-		max-width: 8em;
-		height: 20vw;
-		max-height: 8em;
-		margin: 1em auto;
-	}
+	flex-flow: row nowrap;
+	justify-content: center;
 
 	a {
-		display: block;
-		width: 100%;
-		height: 100%;
-
+		display: flex;
+		flex-flow: column nowrap;
+		align-items: center;
+		justify-content: center;
+		flex-grow: 0;
+		margin-top: 1em;
 
 		svg {
-			display: block;
-			width: 100%;
-			height: 100%;
+			display: inline-block;
+			font-size: 3em;
 		}
 
 		.text {
-			display: none;
+			display: block;
 		}
 
 		&:after {
@@ -356,7 +346,10 @@ main {
 				height: 0.5em;
 			}
 		}
+	}
 
+	a + a {
+		margin-left: 2em;
 	}
 
 }
