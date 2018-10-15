@@ -1,9 +1,9 @@
 {
-  "name": "digsite.github.io",
+  "name": "ravenroc.github.io",
   "description": "Portfolio Site",
   "repository": {
     "type": "git",
-    "url": "https://github.com/digsite/digsite.github.io.git"
+    "url": "https://github.com/ravenroc/ravenroc.github.io.git"
   },
   "version": "0.1.0",
   "devDependencies": {
