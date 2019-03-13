@@ -1,3 +1,5 @@
+const sass = require('node-sass');
+
 module.exports = function(grunt) {
 
     // 1. All configuration goes here
@@ -5,27 +7,29 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         // 2. Configuration for concatinating files goes here.
 
-		imagemin: {
-			dynamic: {
-				files: [{
-					expand: true,
-					cwd: 'img/raw/',
-					src: ['**/*.{png,jpg,gif}'],
-					dest: 'img/'
-				}]
-			}
-		},
+    		imagemin: {
+    			dynamic: {
+    				files: [{
+    					expand: true,
+    					cwd: 'img/raw/',
+    					src: ['**/*.{png,jpg,gif}'],
+    					dest: 'img/'
+    				}]
+    			}
+    		},
 
-        sass: {
-            dist: {
-                options: {
-                    style: 'compressed'
-                },
-                files: {
-                    'css/dist/main.css': 'css/build/main.scss'
-                }
-            }
-        },
+
+      	sass: {
+      		options: {
+      			implementation: sass,
+      			sourceMap: true
+      		},
+      		dist: {
+      			files: {
+      				'main.css': 'main.scss'
+      			}
+      		}
+      	},
 
         autoprefixer: {
             options: {
@@ -55,7 +59,7 @@ module.exports = function(grunt) {
     });
 
     // 3. Where we tell Grunt we plan to use this plug-in.
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-autoprefixer');
