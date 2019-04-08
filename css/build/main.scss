@@ -253,11 +253,6 @@ main {
 		@extend .default-transition;
 		overflow-y: auto;
 		padding: 1em 3em;
-		display: none;
-
-		&.active {
-			display: block;
-		}
 
 		h1, h2, h3, h4, h5, h6 {
 			text-align: center;
